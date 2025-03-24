@@ -1,7 +1,7 @@
 dnl **** Process this file with autoconf to produce a configure script.
 dnl *** Remember [] is the quoting mechanism of m4
 
-AC_PREREQ([2.72])
+AC_PREREQ([2.69])
 AC_INIT([gaw3],[1.0],[www.rvq.fr])
 AC_CONFIG_SRCDIR([src/gawmain.c])
 AM_INIT_AUTOMAKE
@@ -26,14 +26,6 @@ AM_CONDITIONAL(CCISGCC, test "$GCC" = "yes")
 AC_PROG_RANLIB
 AC_PROG_MKDIR_P
 
-# Checks for header files.
-m4_warn([obsolete],
-[The preprocessor macro 'STDC_HEADERS' is obsolete.
-  Except in unusual embedded environments, you can safely include all
-  C89 headers unconditionally.])dnl
-# Autoupdate added the next two lines to ensure that your configure
-# script's behavior did not change.  They are probably safe to remove.
-AC_CHECK_INCLUDES_DEFAULT
 AC_PROG_EGREP
 
 AC_CHECK_HEADERS([fcntl.h float.h stdlib.h string.h unistd.h])
@@ -123,7 +115,7 @@ fi
 # Check for gtk+ 3.0 start
 # 
 
-PKG_CHECK_MODULES(GTK300, gtk+-3.0 >= 3.0.0, GTK300="yes", no_GTK300="yes")
+PKG_CHECK_MODULES([GTK300], [gtk+-3.0 >= 3.0.0], [GTK300="yes"], [no_GTK300="yes"])
 
 # This next bit of code figures out what gtk we need to use.
 if test "$GTK300" = "yes"
@@ -135,7 +127,7 @@ then
    GTK_VERSION=`$PKG_CONFIG gtk+-3.0 --modversion`
 
    # Search for glib
-   PKG_CHECK_MODULES(GLIB228, glib-2.0 >= 2.28.0, GLIB228="yes", no_GLIB228="yes")
+   PKG_CHECK_MODULES([GLIB228], [glib-2.0 >= 2.28.0], [GLIB228="yes"], [no_GLIB228="yes"])
    if test "$GLIB228" != "yes"
    then
        AC_MSG_ERROR([Cannot find glib 2.28.x, install it and rerun ./configure.])
