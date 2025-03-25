@@ -18,5 +18,3 @@ appsdir   = $(datadir)/applications
 icondir   = $(datadir)/pixmaps
 apps_DATA = gaw.desktop
 icon_DATA = gaw.png
-
-ACLOCAL_AMFLAGS = -I m4
