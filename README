@@ -19,8 +19,11 @@ See directory examples for example of different data file format.
 
 Compiling:
 We need :
+  - gettext libs and headers.
   - Gtk+ libs and headers installed.
   - Alsa libasound and headers alsa/asoundlib.h installed.
+  - autoconf if you need to run aclocal/autoconf/autoheader/automake locally.
+  - apt-get install gettext libgtk-3-dev libasound2-dev autoconf
 
 tar zxvf gaw-yyyymmdd.tar.gz
 cd gaw-yyyymmdd
